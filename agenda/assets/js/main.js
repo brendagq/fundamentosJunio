@@ -66,3 +66,23 @@ const users = [
         vaccinated: true
     }
 ]
+
+//EVENT LISTENERS
+// addEventListener
+/*  
+    elemento.addEventListener( "evento", (event) => {
+        //Que se va a llevar a cabo cuando se detecte el "evento" sobre el elemento
+    })
+*/
+
+const boton = document.querySelector( ".btn-delete" )
+const imagen = document.querySelector("img")
+
+// elemento.remove()
+boton.addEventListener( "click", evento =>{
+    console.log( evento )
+    imagen.remove()
+})
+
+
+// padre.removeChild( "hijoQueQuieroEliminar" )
