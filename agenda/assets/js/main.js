@@ -74,15 +74,90 @@ const users = [
         //Que se va a llevar a cabo cuando se detecte el "evento" sobre el elemento
     })
 */
-
+/*
 const boton = document.querySelector( ".btn-delete" )
 const imagen = document.querySelector("img")
-
+*/
 // elemento.remove()
+/*
 boton.addEventListener( "click", evento =>{
     console.log( evento )
     imagen.remove()
 })
-
+*/
+/*
+boton.addEventListener( "click", e => {
+    const contenedor = e.target.parentElement
+    contenedor.remove()
+})
+*/
 
 // padre.removeChild( "hijoQueQuieroEliminar" )
+/*
+const lista = document.querySelector( "ul" )
+const boton = document.querySelector( "button" )
+
+boton.addEventListener( "click", e => {
+    lista.removeChild( lista.lastElementChild )
+})
+*/
+/*
+const section = document.createElement( "section" )
+const body = document.querySelector("body")
+
+body.appendChild( section )
+
+
+section.innerHTML = `<h2 class="text-red"> TITULO </h2>`
+*/
+//reflow 
+
+const container = document.querySelector(".contact-container")
+const formName = document.querySelector("form#search-name")
+const reset = document.querySelector("#reset")
+
+window.addEventListener( "DOMContentLoaded", e =>{
+    showUsers(users)
+})
+
+function showUsers( usersArray ) {
+    let fragmentHTML = ``
+    
+    if( usersArray.length !== 0 ){
+        usersArray.map( user => {
+            fragmentHTML += `<div class="contact-card">
+                <img src=${user.image} class="contact-card--image" alt="Imagen del contacto">
+                <p><span class="contact-card--data">Nombre:</span>${user.name}</p>
+                <p><span class="contact-card--data">Email:</span>${user.email}</p>
+                <p><span class="contact-card--data">Edad:</span>${user.age}</p>
+                <p><span class="contact-card--data">Genero:</span>${user.genre}</p>
+                <p class="contact-card--vaccination ${ user.vaccinated ? "vaccination__completed" : "" }">Vacunacion</p>
+            </div>`  
+        })
+        
+        container.innerHTML = fragmentHTML
+    }else{
+        container.innerHTML = `<h2> No hubo coincidencias <h2/>`
+    }
+
+    //empty state
+
+}
+
+formName.addEventListener( "submit", e => {
+    const input = formName.querySelector("input")
+    searchByName( input.value )
+
+    e.preventDefault()
+})
+
+function searchByName( nombre ){
+    let user = users.filter( user => user.name === nombre )
+
+    showUsers( user ) 
+}
+
+reset.addEventListener( "click", () => showUsers(users) )
+
+
+//Busqueda por genero

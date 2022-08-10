@@ -54,6 +54,41 @@ body{
     background-color: green;
 }
 
+
+.container{
+    border: 1px solid black;
+}
+.text-red{
+    color: tomato;
+}
+
+#search-name{
+    display: flex;
+    padding: 0.25rem 1.5rem;
+    justify-content: space-between;
+    width: 300px;
+    border: 1px solid black;
+    align-items: stretch;
+    border-radius: .5rem;
+}
+
+.search--input{
+    border: none;
+}
+
+.search--input:focus{
+    outline: transparent;
+}
+
+.search--btn{
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 @media screen and (min-width: 576px) {
     .contact-container{
         grid-template-columns: 1fr 1fr;
