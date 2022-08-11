@@ -161,3 +161,6 @@ reset.addEventListener( "click", () => showUsers(users) )
 
 
 //Busqueda por genero
+
+//Agregar un boton de eliminar a cada usuario.
+//Cuando se haga click en el boton, el usuario debe de eliminarse (Del DOM, en el arreglo de usuarios )
