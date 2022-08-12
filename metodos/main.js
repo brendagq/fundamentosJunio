@@ -52,6 +52,14 @@ const numbersArray = [ 10.5, 5.33, 3.4, 50.2, 33.888, 20, 101.83, 666.666 ]
 //Generar un nuevo arreglo con los numeros redondeados.
 const retornoMap = numbersArray.map( number => Math.round( number ))
 console.log( retornoMap )
+/*
+    (number) => Math.round( number )
+
+    ( 10.5 ) => Math.round( 10.5 )  -> [ 11 ]
+    ( 5.33 ) => Math.round( 5.33 ) -> [ 11, 5 ]
+
+*/
+
 
 //Generar un arreglo con el cuadrado de todos los numeros ya redondeados
 const numbersSquare = retornoMap.map( number => number ** 2 )
@@ -76,6 +84,19 @@ console.log( obtenerData("specie", pets)  )
 
 const numerosMayores15 = numbersArray.filter( number => number > 15 )
 console.log( numerosMayores15 )
+
+/*
+function filtrado( array ){
+    let arregloFiltrado = []
+    for (let index = 0; index < array.length; index++) {
+        if( array[index] > 15  ){
+            arregloFiltrado.push( array[index] )
+        }
+    }
+
+    return arregloFiltrado
+}
+*/
 
 //Generar una funcion que reciba como parametro un numero entero. Este numero se utilizara para filtrar a las mascotas. Aquellas que tengan una edad igual o mayor al parametro recibido se devolveran en un arreglo. En caso de que ninguna mascota entre en ese filtro, devolver una cadena que diga: "No se encontraron coincidencias"
 
@@ -114,6 +135,15 @@ console.log( filtroEspecie( "Jirafa", pets ) )
 
 */
 //Encontrar el primer numero que sea menor mayor a 15
+/*
+function filtrado( array ){
+    for (let index = 0; index < array.length; index++) {
+        if( array[index] > 15  ){
+            return  array[index]
+        }
+    }
+}
+*/
 
 const resultadoFind = numbersArray.find( number => number >= 15 )
 console.log( resultadoFind )
