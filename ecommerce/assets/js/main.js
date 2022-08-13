@@ -1,6 +1,33 @@
+const items = [
+    {
+      id: 1,
+      name: 'Hoodies',
+      price: 14.00,
+      image: 'assets/images/featured1.png',
+      category: 'hoodies',
+      quantity: 10
+    },
+    {
+      id: 2,
+      name: 'Shirts',
+      price: 24.00,
+      image: 'assets/images/featured2.png',
+      category: 'shirts',
+      quantity: 15
+    },
+    {
+      id: 3,
+      name: 'Sweatshirts',
+      price: 24.00,
+      image: 'assets/images/featured3.png',
+      category: 'sweatshirts',
+      quantity: 20
+    }
+  ]
 
 document.addEventListener( "DOMContentLoaded", () =>{
     load()
+    showProducts( items )
 })
 
 /* =========== LOADER ========== */
@@ -51,3 +78,43 @@ window.addEventListener( "scroll", () =>{
     }
 })
 
+/* AÑADIR PRODUCTO */
+const productContainer = document.querySelector( "#products-list" )
+
+function showProducts( products ){
+    let fragment = ``
+
+    products.map( product => {
+        fragment += `
+        <div class="product-card" id="${product.id}">
+            <img src=${product.image} alt="">
+            <button class="btn-add">ADD</button>
+        </div>
+        ` 
+    } )
+
+    productContainer.innerHTML = fragment
+
+    cartFunctionality()
+}
+
+
+
+/* AGREGAR AL CARRITO */
+
+function cartFunctionality( ){
+    const btns = document.querySelectorAll( ".btn-add" ) //NodeList
+    console.log( btns )
+    
+    //Arreglo con todos los botones
+    const cart = []
+    
+    btns.forEach( button =>{
+        button.addEventListener( "click", e => {
+            const id = parseInt(e.target.parentElement.id)
+            const selectedProduct = items.find( item => item.id === id)
+            cart.push( selectedProduct )
+            console.log( cart )
+        })
+    })
+}
