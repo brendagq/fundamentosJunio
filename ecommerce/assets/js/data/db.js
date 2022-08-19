@@ -20,7 +20,7 @@ export const items = [
       name: 'Sweatshirts',
       price: 24.00,
       image: 'assets/images/featured3.png',
-      category: 'sweatshirts',
+      category: 'shirts',
       quantity: 20
     }
   ]

@@ -38,6 +38,15 @@ window.addEventListener( "scroll", () =>{
 /* AÑADIR PRODUCTO */
 const productContainer = document.querySelector( "#products-list" )
 
+
+const getHoddiesBtn = document.getElementById("get-hoodies")
+getHoddiesBtn.addEventListener( "click", () => getFilteredProducts(items, "shirts") )
+function getFilteredProducts(products, category) {
+    const filtered = products.filter( item => item.category === category )
+
+    showProducts( filtered )
+}
+
 function showProducts( products ){
     let fragment = ``
 
@@ -70,10 +79,22 @@ function cartFunctionality( ){
         button.addEventListener( "click", e => {
             const id = parseInt(e.target.parentElement.id)
             const selectedProduct = items.find( item => item.id === id)
-            cart.push( selectedProduct )
-            console.log( cart )
+            //cart.push( selectedProduct )
+            //cartProducts( cart )
+
+            let index = cart.indexOf( selectedProduct )
+            
+            if( index !== -1 ){
+                //modificaria la cantidad
+                cart[index].cantidad++
+            }else{
+                // index === -1 -> el producto todavia no existe en el carrito
+                selectedProduct.cantidad = 1
+                cart.push( selectedProduct )
+            }
 
             cartProducts( cart )
+            console.log( cart )
         })
     })
 }
